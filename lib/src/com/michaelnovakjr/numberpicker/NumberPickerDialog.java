@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.view.LayoutInflater;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 
 public class NumberPickerDialog extends AlertDialog implements OnClickListener {
@@ -28,12 +29,14 @@ public class NumberPickerDialog extends AlertDialog implements OnClickListener {
 
     private int mInitialValue;
 
-    public NumberPickerDialog(Context context, int theme, int initialValue) {
+    public NumberPickerDialog(Context context, int theme, int initialValue,String positive_txt,
+        	String negative_text,int Color) {
         super(context, theme);
+        getWindow().setBackgroundDrawable(new ColorDrawable(Color));
         mInitialValue = initialValue;
 
-        setButton(BUTTON_POSITIVE, context.getText(R.string.dialog_set_number), this);
-        setButton(BUTTON_NEGATIVE, context.getText(R.string.dialog_cancel), (OnClickListener) null);
+        setButton(BUTTON_POSITIVE, positive_txt, this);
+        setButton(BUTTON_NEGATIVE, negative_text, (OnClickListener) null);
         setTitle(context.getText(R.string.dialog_picker_title));
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
