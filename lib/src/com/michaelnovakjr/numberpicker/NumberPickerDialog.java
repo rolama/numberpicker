@@ -30,6 +30,10 @@ public class NumberPickerDialog extends AlertDialog implements OnClickListener {
 
     public NumberPickerDialog(Context context, int theme, int initialValue) {
         super(context, theme);
+        /**
+         *  Transparent background in dialog
+         * /
+        getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         mInitialValue = initialValue;
 
         setButton(BUTTON_POSITIVE, context.getText(R.string.dialog_set_number), this);
